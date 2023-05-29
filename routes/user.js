@@ -9,6 +9,7 @@ const router = express.Router();
 router
   .post('/register', validator.register, controller.register)
   .post('/login', validator.login, controller.login)
-  .get('/list', verifyToken, controller.list);
+  .get('/list', verifyToken, controller.list)
+  .put('/', verifyToken, validator.update, controller.update);
 
 module.exports = router;

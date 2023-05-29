@@ -14,5 +14,5 @@ connect()
   });
 
 module.exports = {
-  User: new mogoose.model('User', require('./userModel')),
+  User: mogoose.model('User', require('./userModel')),
 };

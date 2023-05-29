@@ -27,6 +27,14 @@ const userSchema = new mogoose.Schema({
     type: String,
     default: null,
   },
+  cover: {
+    type: String,
+    default: null,
+  },
+  channelDesc: {
+    type: String,
+    default: null,
+  },
   ...baseModel
 });
 

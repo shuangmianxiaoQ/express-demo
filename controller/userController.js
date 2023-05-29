@@ -2,11 +2,6 @@ const _ = require('lodash');
 const { User } = require('../model');
 const { createToken } = require('../utils/jwt');
 
-exports.list = (req, res) => {
-  console.log(req.user, 'req');
-  res.send('user list');
-};
-
 exports.register = async (req, res) => {
   const userModel = new User(req.body);
   const result = await userModel.save();
@@ -22,4 +17,14 @@ exports.login = async (req, res) => {
   const json = result.toJSON();
   const token = await createToken(json);
   res.status(200).json({ ...json, token });
+};
+
+exports.list = (req, res) => {
+  console.log(req.user, 'req');
+  res.send('user list');
+};
+
+exports.update = async (req, res) => {
+  const result = await User.findByIdAndUpdate(req.user._id, req.body, { new: true })
+  res.status(200).json(result);
 };
